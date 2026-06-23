@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xincheng Max Ma </title>
+  <title>Xincheng Max Ma | PhD Candidate in Information Systems, HKUST</title>
   <meta name="description" content="Xincheng Max Ma is a PhD Candidate in Information Systems at HKUST Business School. His research lies at the intersection of AI for business and digital marketing." />
   <meta name="author" content="Xincheng Max Ma" />
   <meta name="keywords" content="Xincheng Max Ma, Xincheng Ma, Xincheng (Max) Ma, Max Ma, HKUST, ISOM, Information Systems, AI for business, digital marketing, AI marketing" />
@@ -48,10 +48,11 @@
           mechanisms of business growth and the role of technology in shaping them.
         </p>
       </div>
+
       <aside class="profile-card" aria-label="Profile information">
-        <div class="profile-photo">
-          <img src="assets/profile.jpg" alt="Xincheng Max Ma" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-          <div class="avatar-placeholder">XM</div>
+        <div class="photo-frame">
+          <img id="profileImage" class="profile-photo" src="assets/profile.jpg" alt="Xincheng Max Ma" />
+          <div id="avatarPlaceholder" class="avatar-placeholder">XM</div>
         </div>
         <h2>Xincheng (Max) Ma</h2>
         <p class="chinese-name-card">马新程</p>
@@ -105,7 +106,6 @@
         </li>
       </ul>
     </section>
-
   </main>
 
   <footer class="footer">
@@ -114,6 +114,28 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const profileImage = document.getElementById('profileImage');
+    const avatarPlaceholder = document.getElementById('avatarPlaceholder');
+    const fallbackImages = [
+      'assets/profile.png',
+      'assets/Profile.jpg',
+      'assets/profile.JPG',
+      'assets/picture.jpg',
+      'assets/photo.jpg',
+      'assets/headshot.jpg'
+    ];
+    let fallbackIndex = 0;
+
+    avatarPlaceholder.style.display = 'none';
+    profileImage.onerror = function () {
+      if (fallbackIndex < fallbackImages.length) {
+        profileImage.src = fallbackImages[fallbackIndex++];
+      } else {
+        profileImage.style.display = 'none';
+        avatarPlaceholder.style.display = 'grid';
+      }
+    };
   </script>
 </body>
 </html>
